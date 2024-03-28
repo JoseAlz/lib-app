@@ -1,0 +1,18 @@
+<%- include('layout_top'); -%>
+<% const genreName = typeof genre === 'undefined' ? '' : genre?.name %>
+<h1><%= title %><%= ": " + genreName %></h1>
+<form method="POST">
+  <div class="form-group">
+    <label for="name">Genre: <%= genreName %></label>
+    <input id="name" class="form-control" type="text" placeholder="Fantasy, Poetry etc." name="name" required value="<%= genreName %>" />
+  </div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+</form>
+<% if (typeof errors != 'undefined') { %>
+  <ul>
+  <% errors.forEach(function(error) { %>
+    <li><%= error?.msg %></li>
+  <% }); %>
+  </ul>
+<% } %>
+<%- include('layout_bottom'); -%>

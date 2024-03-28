@@ -1,0 +1,12 @@
+<%- include('layout_top'); -%>
+<h1><%= title %></h1>
+<p>Welcome to <b>LocalLibrary</b>, a very basic Express website developed as a tutorial example of the Mozilla Developer Network (MDN).</p>
+<h2>List of Authors</h2>
+<ul>
+<% author_list.forEach(function(author) { %>
+<li>
+<a href="<%= author.url %>"><%= author.name %></a> (<%= author.lifetime %>)
+</li>
+<%  }); %>
+</ul>
+<%- include('layout_bottom'); -%>

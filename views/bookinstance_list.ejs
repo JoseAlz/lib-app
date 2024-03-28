@@ -1,0 +1,20 @@
+<%- include('layout_top'); -%>
+<h1><%= title %></h1>
+<ul>
+<% bookinstance_list.forEach(function(book) { %>
+<li>
+  <a href="<%= book.url %>"><%= book.book.title %> : <%= book.imprint %></a> - <% status = book.status %>
+  <% if (status == "Available") { %>
+  <span class="text-success"><%= status %></span>
+  <% } else if (status == "Maintenance") { %>
+  <span class="text-danger"><%= status %></span>
+  <% } else { %>
+  <span class="text-warning"><%= status %></span>
+  <% } %>
+  <% if (status != "Available") { %>
+  <span><%= book.due_back_formatted %></span>
+  <% } %>
+</li>
+<% }); %>
+</ul>
+<%- include('layout_bottom'); -%>

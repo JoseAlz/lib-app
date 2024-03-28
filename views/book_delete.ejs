@@ -1,0 +1,24 @@
+<%- include('layout_top'); -%>
+<h1><%= title %>: <%= book.title %></h1>
+<p><%= book.author.name %></p>
+<p><%= book.isbn %></p>
+<div style="margin-left:20px;margin-top:20px">
+<% if (book_instances.length > 0) { %>
+  <h4>Please delete the following Book Instances</h4>
+  <% book_instances.forEach(function(bookInstance) { %>
+  <% console.log(bookInstance); %>
+    <ul>
+      <li>Id: <a href="<%= bookInstance.url %>"><%= bookInstance._id %></a></li>
+    </ul>
+  <% }); %>
+<% } else { %>
+</div>
+<form method="POST">
+  <div class=form-group>
+    <input id="bookid" class="form-control" type="hidden" name="bookid" />
+  </div>
+  <h4>Click delete to delete this book.</h4>
+<button class="btn btn-primary" type="submit">Delete</button>
+</form>
+<% } %>
+<%- include('layout_bottom'); -%>

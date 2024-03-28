@@ -1,0 +1,26 @@
+<%- include('layout_top'); -%>
+<!- title ->
+<!- author:->
+<!- author_books: ->
+<h1>Author: <%= author.name %></h1>
+<p><%= author.lifetime %></p>
+<div style="margin-left: 20px; margin-top: 20px">
+<% if (author_books.length) { %>
+<h4>Books</h4>
+<% } %>
+<% if (author_books.length) { %>
+    <dl>
+    <% author_books.forEach(function(book) { %>
+        <dt><a href="<%= book.url %>"><%= book.title %></a></dt>
+        <% const bookSummary = book.summary.length > 300 ? book.summary.slice(0, 300).trim() + "..." : book.summary %>
+        <dd><%= bookSummary %></dd>
+    <% }); %>
+    </dl>
+  <% } else { %>
+      <h4><%= author.first_name %> <%= author.family_name %> has no books</h4>
+  <% } %>
+</div>
+<hr>
+<p><a href="<%= author.url + '/delete'%>">Delete</a></p>
+<p><a href="<%= author.url + '/update'%>">Update</a></p>
+<%- include('layout_bottom'); -%>

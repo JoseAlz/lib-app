@@ -1,0 +1,17 @@
+<%- include('layout_top'); -%>
+<h1>Delete Book Instance: <%= bookInstance._id %></h1>
+<hr>
+<div style="margin-left:20px;margin-top:20px">
+<p><a href="<%= bookInstance.url %>"><%= bookInstance._id %></a></p>
+<p><%= book.title %></p>
+<p><%= author.name %></p>
+<div>
+<form method="POST">
+  <div class=form-group>
+    <input id="bookInstanceId" class="form-control" type="hidden" name="bookInstanceId" value="<%= %>" />
+  </div>
+  <hr>
+  <p>Click delete to delete this book instance.</p>
+<button class="btn btn-primary" type="submit">Delete</button>
+</form>
+<%- include('layout_bottom'); -%>

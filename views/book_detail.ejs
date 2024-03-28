@@ -1,0 +1,36 @@
+<%- include('layout_top'); -%>
+<!- title ->
+<!- book: title, author, summary, isbn, genre, url, id ->
+<!- book_instances[n]: book, imprint, due_back, status ->
+<h1><%= title %></h1>
+<p><b>Author: </b><a href="<%= book.author.url %>"><%= book.author.name %></a><br /></p>
+<p><b>Summary: </b><%= book.summary %><br /></p>
+<p><b>ISBN: </b><%= book.isbn %><br /></p>
+<p><b>Genre: </b><% book.genre.forEach(function(genre){ %>
+<a href="<%= genre.url %>"><%= genre.name %></a>,
+<% }); %></p>
+<div style="margin-left:20px;margin-top:20px">
+<h4>Copies</h4>
+<% book_instances.forEach(function(val) { %>
+  <hr>
+  <% if (val.status == "Available") { %>
+    <p class="text-success"><%= val.status %></p>
+  <% } else if (val.status == "Maintenance") { %>
+    <p class="text-danger"><%= val.status %></p>
+  <% } else { %>
+    <p class="text-warning"><%= val.status %></p>
+  <% } %>
+  <p><b><%= val.imprint %></b></p>
+  <% if (val.status != "Available") { %>
+    <p><b><%= val.due_back_formatted %></b></p>
+  <% } %>
+  <p><b>Id: </b><a href="<%= val.url %>"><%= val._id %></a></p>
+<% }); %>
+<% if (!book_instances.length) { %>
+<p>There are no copies of this book in the library.</p>
+<% } %>
+</div>
+<hr>
+<p><a href="<%= book.url + '/delete'%>">Delete</a></p>
+<p><a href="<%= book.url + '/update'%>">Update</a></p>
+<%- include('layout_bottom'); -%>

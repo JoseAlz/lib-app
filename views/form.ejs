@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %> &#x1F60D;</h1>
+    <a class="links" href="/">Home</a>
+    <a class="links" href="/new">New Message</a>
+    <br /><br />
+    <form method="POST" action="/new">
+      <label for="name">Name: </label>
+      <input type="text" id="name" name="name" required><br /><br />
+      <label for="message">Message: </label>
+      <input type="text" id="message" name="message" required><br /><br />
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

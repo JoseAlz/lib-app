@@ -1,0 +1,21 @@
+<%- include('layout_top'); -%>
+<h1>Delete Genre: <%= genre.name %></h1>
+<div style="margin-left:20px;margin-top:20px">
+<% if (books.length > 0) { %>
+  <h4>Please remove the following books from the <b><%= genre.name %></b> genre.</h4>
+  <ul>
+  <% books.forEach(function(book) { %>
+    <li><a href="<%= book.url %>"><%= book.title %></a></li>
+  <% }); %>
+  </ul>
+<% } else { %>
+  <form method="POST">
+    <div class=form-group>
+      <input id="genreid" class="form-control" type="hidden" name="genreid" />
+    </div>
+    <p>Click "Delete" to delete <i><%= genre.name %></i>.</p>
+    <button class="btn btn-primary" type="submit">Delete</button>
+  </form>
+<% } %>
+</div>
+<%- include('layout_bottom'); -%>

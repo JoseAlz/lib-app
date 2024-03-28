@@ -1,0 +1,46 @@
+<%- include("layout_top"); -%>
+<h1><%= title %></h1>
+<form method="POST">
+  <div class="form-group">
+    <label for="book">Book:</label>
+    <select id="book" class="form-control" name="book" required>
+      <option value="">--Please Select a Book--</option>
+      <% for (book of book_list) { %>
+        <% if (selected_book == book._id.toString()) { %>
+          <option value="<%= book._id %>" selected><%= book.title %></option>
+        <% } else { %>
+          <option value="<%= book._id %>"><%= book.title %></option>
+      <% }} %>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="imprint">Imprint:</label>
+    <input id="imprint" class="form-control" type="text" placeholder="Publisher & Date Information" name="imprint" required value="<%= typeof bookinstance === 'undefined' ? '' : bookinstance?.imprint %>" />
+  </div>
+  <div class="form-group">
+    <label for="due_back">Date when book available:</label>
+    <input id="due_back" class="form-control" type="date" name="due_back" value="<%= typeof bookinstance === 'undefined' ? '' : bookinstance?.due_back_yyyy_mm_dd %>" />
+  </div>
+  <div class="form-group">
+    <label for="form-control">Status:</label>
+    <select id="status" class="form-control" name="status" required>
+    <option value=''>--Please Select a Status--</option>
+    <% const statuses = ['Maintenance', 'Available', 'Loaned', 'Reserved']; %>
+    <% for (status of statuses) { %>
+      <% if (typeof bookinstance === 'undefined' || bookinstance?.status != status) { %>
+        <option value="<%= status %>"><%= status %></option>
+      <% } else { %>
+        <option value="<%= status %>" selected><%= status %></option>
+    <% }} %>
+    </select>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+<% if (typeof errors != 'undefined') { %>
+  <ul>
+  <% errors.forEach(function(error) { %>
+    <li><%= error?.msg %></li>
+  <% }); %>
+  </ul>
+<% } %>
+<%- include("layout_bottom"); -%>

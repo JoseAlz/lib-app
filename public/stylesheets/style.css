@@ -1,0 +1,16 @@
+body {
+  padding: 50px;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  color: #0d0d0d;
+}
+
+a {
+  color: rgb(20, 20, 19);
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}

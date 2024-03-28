@@ -1,0 +1,4 @@
+node_modules/
+db_creds.js
+db_creds.txt
+.env
