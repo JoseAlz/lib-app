@@ -24,7 +24,7 @@ const limiter = RateLimit({
 
 // Connect to MongoDB
 const mongoDb = process.env.MONGODB_URI;
-main().catch((err) => console.log(err));d
+main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDb); /*mongodb://localhost:27017/nombre_base_datos*/
 }
