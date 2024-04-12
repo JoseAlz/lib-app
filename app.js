@@ -26,7 +26,7 @@ const limiter = RateLimit({
 const mongoDb = process.env.MONGODB_URI;
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect("mongodb+srv://cooluser:coolpassword@cluster0.lz91hw2.mongodb.net/local_library?retryWrites=true&w=majority"); /*mongodb://localhost:27017/nombre_base_datos*/
+  await mongoose.connect(mongodb); /*mongodb://localhost:27017/nombre_base_datos || cluster mongodb */
 }
 
 var app = express();
